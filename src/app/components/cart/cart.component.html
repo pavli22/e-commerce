@@ -1,0 +1,73 @@
+<div class="container mt-5 py-4" *ngIf="cartNum> 0 else:found;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="content d-flex justify-content-between">
+        <div>
+          <h2 class="my-3">Cart Shop</h2>
+          <h6>total price: <span class="text-main">{{data.totalCartPrice}}</span></h6>
+        </div>
+        <div>
+          <button [routerLink]="['/shipping' ,data._id ]" class="btn main-btn my-3 fs-3 fw-bolder">check
+            out</button>
+          <h6>total number of items: <span class="text-main">{{cartNum}}</span></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart p-3 rounded-2">
+    <div class="row align-items-center border-bottom py-2" *ngFor="let item of data.products">
+      <div class="col-md-3">
+        <div class="content">
+          <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="content">
+          <p class="fw-bolder h5">{{item.product.title}}</p>
+          <span class="text-main fw-bolder">{{item.price}}</span>
+          <div class="options d-flex justify-content-between mt-3">
+            <span (click)="removeSpecificItem(item.product._id)" class="text-danger cursor-pointer"><i
+                class="fa-solid fa-trash mx-2"></i>Remove</span>
+            <div class="counter d-flex align-items-center">
+              <button (click)="updateCart(item.product._id ,item.count+1 )"
+                class="btn btn-outline-danger btn-sm">+</button>
+              <span class="btn btn-outline-danger border-0">{{item.count <=0 ? removeSpecificItem(item.product._id):
+                  item.count }} </span>
+                  <button (click)="updateCart(item.product._id ,item.count-1 )"
+                    class="btn btn-outline-danger btn-sm">-</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <button (click)="clearUserCart()" class="btn btn-outline-success fs-3">Claer Your Cart</button>
+  </div>
+
+</div>
+
+<ng-template #found>
+  <div class="container-fluid  mt-100">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body cart">
+            <div class="col-sm-12 empty-cart-cls text-center">
+              <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+              <h3><strong>Your Cart is Empty</strong></h3>
+              <h4>Add something to make me happy :)</h4>
+              <a routerLink="/home" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>

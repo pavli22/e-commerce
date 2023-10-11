@@ -1,0 +1,27 @@
+<div class="container py-5">
+  <div class="row shadow p-3 rounded-3">
+    <form [formGroup]="shippingForm" (ngSubmit)="getShippingData(shippingForm)">
+      <div class="header d-flex justify-content-between">
+        <h4 class="heading text-main mb-4 p-0">Shipping</h4>
+        <div *ngIf="msg" class="alert alert-success p-1 fw-bolder">
+          {{msg}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input formControlName="details" type="details" class="form-control" id="floatingDetails"
+          placeholder="Enter your details">
+        <label for="floatingDetails">Details</label>
+
+      </div>
+      <div class="form-floating mb-3">
+        <input formControlName="phone" type="tel" class="form-control" id="floatingPhone" placeholder="Enter Phone">
+        <label for="floatingPhone">Phone</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input formControlName="city" type="tel" class="form-control" id="floatingCity" placeholder="Enter City">
+        <label for="floatingCity">City</label>
+      </div>
+      <button class="btn main-btn w-100">Pay Now</button>
+      </ form>
+  </div>
+</div>

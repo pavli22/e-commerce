@@ -1,0 +1,39 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center mb-3">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Search..." [(ngModel)]="searchValue">
+          <a class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row gy-2" *ngIf="productList">
+    <div class="col-md-3" *ngFor="let product of productList|search:searchValue">
+      <div class="product content rounded-2  overflow-hidden">
+        <div class="show position-relative overflow-hidden">
+          <img [src]="product.imageCover" class="w-100 d-block ">
+          <div class="layerDetails position-absolute top-0 bottom-0 w-100 h-100">
+            <div>
+              <i (click)="changeIconColor($event , product._id)"
+                [ngClass]="wishListId.includes(product._id)? 'text-danger': 'text-white'"
+                class="fa-solid fa-heart fs-3 position-absolute top-0 end-0 p-2 cursor-pointer "></i>
+            </div>
+            <button [routerLink]="['/product-Details',product._id]" class="btn main-btn">See Details</button>
+            <button (click)="addToCart(product._id)" class="btn main-btn">+ADD</button>
+          </div>
+        </div>
+        <div class="desc  p-2">
+          <span class="text-main">{{product.brand.name}} </span>
+          <h3 class="h6">{{product.title.split(" ").slice(0,4).join(" ")}} </h3>
+          <div class="d-flex justify-content-between fw-bolder">
+            <span>{{product.price|currency:'EGP'}}</span>
+            <span>{{product.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

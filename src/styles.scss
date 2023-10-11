@@ -1,1 +1,124 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+$main-color: #2250b3;
+$light-color: #f0f3f2;
+$shadow: #2250b3 0px 2px 4px -1px, #2250b37d 0px 4px 5px 0px,
+  #2250b348 0px 1px 10px 0px;
+$font-family: "Encode Sans Expanded", sans-serif;
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+.rating-color {
+  color: $rating-color;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-sm {
+  font-size: 14px;
+}
+
+.text-main {
+  color: $main-color;
+}
+
+.text-main-light {
+  color: $light-color;
+}
+
+.bg-main {
+  background-color: $main-color !important;
+}
+
+.bg-main-light {
+  background-color: $light-color !important;
+}
+
+.main-btn {
+  cursor: pointer;
+  color: #fff !important;
+  background-color: #8bc6ec;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+
+  transition: background-color $main-transition;
+}
+
+.main-btn:disabled {
+  background-color: rgba(57, 60, 140, 0.851) !important;
+  color: #ffffff8e !important;
+  cursor: not-allowed;
+}
+
+.product {
+  &:hover {
+    box-shadow: $shadow;
+    border: solid 1px var(--main-color);
+
+    .add-btn {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  .add-btn {
+    transition: transform 1s, opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+.cart {
+  box-shadow: $shadow;
+  border: solid 1px var(--main-color);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #397524 #dfe9eb;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #2250b3;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #2250b3;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #2250b3;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  opacity: 0;
+  background-color: #2250b3;
+  border-radius: 10px;
+  border: transparent !important;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+}
+.show-scrollTop {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}

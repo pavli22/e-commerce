@@ -1,0 +1,65 @@
+<div class="row shadow p-3 rounded-3">
+  <form [formGroup]="registerForm" (ngSubmit)="getRegisterData(registerForm)">
+    <div class="header d-flex">
+      <h4 class="heading text-main mb-4 p-0">Register</h4>
+      <p *ngIf="errorMSG" class="text-white mx-auto">{{errorMSG}}</p>
+    </div>
+    <div class="form-floating mb-3">
+      <input formControlName="name" type="text" class="form-control" id="floatingInput" placeholder="Enter your name">
+      <label for="floatingInput">Name</label>
+      <div class="alert alert-danger my-1"
+        *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched">
+        <p *ngIf="registerForm.get('name')?.getError('required')"> Name is
+          required</p>
+        <p *ngIf="registerForm.get('name')?.getError('minlength')">minLength is 3</p>
+        <p *ngIf="registerForm.get('name')?.getError('maxlength')">maxLength is 10</p>
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input formControlName="email" type="email" class="form-control" id="floatingEmail"
+        placeholder="Enter your email">
+      <label for="floatingEmail">Email</label>
+      <div class="alert alert-danger my-1"
+        *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+        <p *ngIf="registerForm.get('email')?.getError('required')"> email is
+          required</p>
+        <p *ngIf="registerForm.get('email')?.getError('email')">email is invail</p>
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input formControlName="password" type="password" class="form-control" id="floatingPassword"
+        placeholder="Enter password">
+      <label for="floatingPassword">Password</label>
+      <div class="alert alert-danger my-1"
+        *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+        <p *ngIf="registerForm.get('password')?.getError('required')"> password is
+          required</p>
+        <p *ngIf="registerForm.get('password')?.getError('pattern')">password is not valid</p>
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input formControlName="rePassword" type="password" class="form-control" id="floatingrePassword"
+        placeholder="Enter rePassword">
+      <label for="floatingrePassword">rePassword</label>
+      <div class="alert alert-danger my-1"
+        *ngIf="registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched">
+        <p *ngIf="registerForm.get('rePassword')?.getError('required')"> rePassword is
+          required</p>
+        <p *ngIf="registerForm.get('rePassword')?.getError('missmatch')">rePassword is not the same</p>
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input formControlName="phone" type="tel" class="form-control" id="floatingPhone" placeholder="Enter your Phone">
+      <label for="floatingPhone">Phone</label>
+      <div class="alert alert-danger my-1"
+        *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched">
+        <p *ngIf="registerForm.get('phone')?.getError('required')"> phone is
+          required</p>
+        <p *ngIf="registerForm.get('phone')?.getError('pattern')">phone is not valid</p>
+      </div>
+    </div>
+    <button [disabled]="registerForm.invalid" type="submit" class="btn main-btn text-main-light">
+      <i class="fas fa-spin fa-spinner" *ngIf="isLoading"></i>
+      <span *ngIf="!isLoading">Submit</span></button>
+  </form>
+</div>

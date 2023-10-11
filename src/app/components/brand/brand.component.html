@@ -1,0 +1,35 @@
+<div class="container my-5">
+  <div class="row gy-3">
+    <div class="col-md-3" *ngFor="let item of data">
+      <div class="content border rounded-3 overflow-hidden product p-2" (click)="getSpecificBrand(item._id)"
+        data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img [src]="item.image" class="w-100">
+        <p class="muted text-center p-3">{{item.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="content d-flex">
+          <div class="left flex-grow-1 d-flex justify-content-center flex-column ">
+            <h4 class="text-main fw-bolder h2">{{dataBrandSpecific.name}}</h4>
+            <p>{{dataBrandSpecific.name}}</p>
+          </div>
+          <div class="right">
+            <img [src]="dataBrandSpecific.image" class="w-100">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

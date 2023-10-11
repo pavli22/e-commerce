@@ -1,0 +1,51 @@
+<div class="container my-5 shadow rounded-4">
+  <div class="row gy-2" *ngIf="productDetails">
+    <div class="col-md-12">
+      <div class="product content rounded-2 overflow-hidden">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let slide of productDetails.images">
+            <ng-template carouselSlide>
+              <img   [src]="slide" class="object-fit-contain" style="height: 600px;">
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-9">
+        <div class="desc p-2">
+          <span class="text-main">{{productDetails.brand.name}} </span>
+          <h3 class="h6">{{productDetails.title.split(" ").slice(0,4).join(" ")}} </h3>
+          <p>{{productDetails.description}}</p>
+          <div class="d-flex justify-content-between fw-bolder">
+            <div class="left d-flex gap-5  w-100">
+              <div class="size">
+                <h4 class="h4">Size</h4>
+                <ul class="list-unstyled fw-bolder text-main d-flex justify-content-evenly">
+                  <li>32</li>
+                  <li>33</li>
+                  <li>40</li>
+                  <li>44</li>
+                </ul>
+              </div>
+              <div class="color">
+                <div class="size">
+                  <h4 class="h4">Color</h4>
+                  <ul class="list-unstyled fw-bolder d-flex justify-content-evenly">
+                    <li> </li>
+                    <li> </li>
+                    <li> </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <span>{{productDetails.price|currency:'EGP'}}</span> -->
+            </div>
+            <span>{{productDetails.ratingsAverage}} <i class="fa-solid fa-star rating-color"></i></span>
+          </div>
+          <button (click)="addToCart(productDetails._id)" class="btn main-btn w-100 mt-5">ADD</button>
+        </div>
+      </div>
+
+    </div>
+  </div>

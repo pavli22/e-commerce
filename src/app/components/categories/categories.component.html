@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <div class="row gy-3">
+    <div class="col-md-4" *ngFor="let item of data">
+      <div class="content border product rounded-2 overflow-hidden" (click)="getSupCategory(item._id , item.name)">
+        <img [src]="item.image" class="w-100 object-fit-cover" height="400px">
+        <h4 class="text-main text-center p-3">{{item.name}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row gy-3 mt-3" *ngIf="countOfSubCategory > 0 ">
+    <div class="col-12">
+      <h3 class="text-main text-center">{{subCategoryName}} subcategories</h3>
+    </div>
+    <div class="col-md-4" *ngFor="let item of dataSupCategory">
+      <div class="content border rounded-1 product">
+        <h4 class="text-center p-3  ">{{item.name}}</h4>
+      </div>
+    </div>
+  </div>
+</div>

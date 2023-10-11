@@ -1,0 +1,30 @@
+<section>
+  <div class="row g-0">
+    <div class="col-md-9 overflow-hidden rounded-2">
+      <owl-carousel-o [options]="mainOptions">
+        <ng-template carouselSlide><img src=" assets/main-slider-1.jpeg" class="w-100" height="400"></ng-template>
+        <ng-template carouselSlide><img src=" assets/main-slider-2.jpeg" class="w-100" height="400"></ng-template>
+        <ng-template carouselSlide><img src=" assets/main-slider-3.jpeg" class="w-100" height="400"></ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="col-md-3 ">
+      <img src="../../../assets/slide-1.jpeg " height="200" class="w-100 rounded-0">
+      <img src="../../../assets/slide-2.jpeg" height="200" class="w-100">
+    </div>
+  </div>
+</section>
+
+<section *ngIf=" allCategories">
+  <h3>Popular Categories</h3>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of allCategories">
+      <ng-template carouselSlide>
+        <img [src]="slide.image" [alt]="slide.name" [title]="slide.slug" class="w-100 object-fit-fill"
+          style="width: 350px; height: 250px;">
+        <p class="fs-5 text-main fw-bolder text-center">{{slide.name}}</p>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+ 
+<app-product></app-product>
